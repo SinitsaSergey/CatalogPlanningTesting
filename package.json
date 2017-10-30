@@ -1,0 +1,22 @@
+{
+  "name": "CatalogPlanning",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "pretest": "npm run tsc",
+    "test": "protractor tmp/conf.js"
+  },
+  "dependencies": {
+    "@types/jasmine": "^2.6.0",
+    "@types/jasminewd2": "^2.0.3",
+    "@types/protractor": "^4.0.0",
+    "jasmine": "^2.8.0",
+    "protractor": "^5.2.0",
+    "typescript": "~2.5.3"
+  },
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.3",
+    "ts-node": "^3.3.0"
+  }
+}
