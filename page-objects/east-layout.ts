@@ -1,8 +1,9 @@
-import {$, $$, by} from "protractor";
+import {$, by} from "protractor";
+import {Prototype} from "./prototype";
 
 const ROOT = $('#eastLayout');
 
-export class EastLayout {
+export class EastLayout extends Prototype {
 
     nummerField = ROOT.$("input[placeholder='Nummer']");
     typeSelect = ROOT.element(by.cssContainingText('select', 'Prospekt'));
@@ -26,4 +27,17 @@ export class EastLayout {
     vrNameField = ROOT.$('.form-control.input-sm');
     saveVrButton = ROOT.$('.fa-floppy-o');
 
+    saveNewValue(value: string) {
+        return this.replaceValue(this.vrNameField, value)
+            .then(() => this.saveVrButton.click());
+    }
+
+    changePublicationValues(nummer: string, et: string, kommentar: string) {
+        return this.replaceValue(this.nummerField, nummer)
+            .then(() => this.selectOption(this.typeSelect, this.typeOption))
+            .then(() => this.replaceValue(this.etField, et))
+            .then(() => this.selectOption(this.preiseSelect, this.preiseOption))
+            .then(() => this.selectOption(this.landSelect, this.landOption))
+            .then(() => this.kommentarField.sendKeys(kommentar))
+    }
 }

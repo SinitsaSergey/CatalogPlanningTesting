@@ -2,7 +2,7 @@ import {WestLayout} from "../page-objects/west-layout";
 import {Header} from "../page-objects/header";
 import {Center} from "../page-objects/center";
 import {EastLayout} from "../page-objects/east-layout";
-import {browser, protractor} from "protractor";
+import {browser} from "protractor";
 import {ModalContent} from "../page-objects/modal-content";
 
 const TESTING_URL = 'http://vtest16:8093/catalog-planning/#/productionsEditor';
@@ -10,7 +10,7 @@ const VR_NAME_VALUE = 'VR_2';
 const NEW_VORTEILE_VALUE = 'Test_create';
 const EDIT_VORTEILE_VALUE = 'Test_edit';
 
-describe('test 3', () => {
+xdescribe('test 3', () => {
 
     let westLayout = new WestLayout();
     let header = new Header();
@@ -18,20 +18,12 @@ describe('test 3', () => {
     let eastLayout = new EastLayout();
     let modalContent = new ModalContent();
 
-    let EC = protractor.ExpectedConditions;
-
     beforeAll(() => {
         browser.get(TESTING_URL);
     });
 
-    afterAll(() => {
-        browser.sleep(5000);
-    });
-
     it('Отображается форма PuC.Marketing Vorteile', () => {
-        westLayout.stammdatenRef.click();
-        browser.wait(EC.visibilityOf(westLayout.vorteileRef));
-        westLayout.vorteileRef.click();
+        westLayout.selectVorteileMenuItem();
         expect(header.applicationTitle.getText()).toEqual('Vorteile');
     });
 
@@ -42,16 +34,13 @@ describe('test 3', () => {
 
     it('В списке должна появиться новая строка со значением Name, заданным на этапе создания', () => {
         center.createVorteileButton.click();
-        modalContent.inputNameField.sendKeys(NEW_VORTEILE_VALUE);
-        modalContent.okButton.click();
+        modalContent.inputValue(NEW_VORTEILE_VALUE);
         expect(center.getListElement(NEW_VORTEILE_VALUE).isPresent()).toBe(true);
     });
 
     it('В списке должна обновиться информация об измененном элементе', () => {
         center.getListElement(NEW_VORTEILE_VALUE).click();
-        eastLayout.vrNameField.clear();
-        eastLayout.vrNameField.sendKeys(EDIT_VORTEILE_VALUE);
-        eastLayout.saveVrButton.click();
+        eastLayout.saveNewValue(EDIT_VORTEILE_VALUE);
         expect(center.getListElement(EDIT_VORTEILE_VALUE).isPresent()).toBe(true);
     });
 

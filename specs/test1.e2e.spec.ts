@@ -1,4 +1,4 @@
-import {browser, protractor} from "protractor";
+import {browser} from "protractor";
 import {WestLayout} from "../page-objects/west-layout";
 import {Center} from "../page-objects/center";
 import {Actions} from "../utils/actions";
@@ -19,10 +19,8 @@ xdescribe('test 1', () => {
     let header = new Header();
     let center = new Center();
     let eastLayout = new EastLayout();
-    let EC = protractor.ExpectedConditions;
-    let doubleClick = Actions.doobleClick;
-    let replaceValue = Actions.replaceValue;
-    let selectOption = Actions.selectOption;
+    let doubleClickAndWait = Actions.doubleClickAndWait;
+    let {replaceValue, selectOption} = eastLayout;
 
     beforeAll(() => {
         browser.get(TESTING_URL);
@@ -34,11 +32,7 @@ xdescribe('test 1', () => {
     });
 
     it('На форме справа на вкладке Werbeplanung поля Nummer, Type, ET, Preise содержат значения, согласно выбору', () => {
-        doubleClick(center.treeElementLevel1);
-        browser.wait(EC.visibilityOf(center.treeElementLevel2));
-        doubleClick(center.treeElementLevel2);
-        browser.wait(EC.visibilityOf(center.treeElementLevel3));
-        center.treeElementLevel3.click();
+        center.selectElementInTree();
         expect(eastLayout.nummerField.getAttribute('value')).toEqual('6556');
         expect(eastLayout.typeSelect.getAttribute('value')).toEqual(PROSPEKT_VALUE);
         expect((eastLayout.etField.getAttribute('value'))).toEqual('02.03.2017');
@@ -46,12 +40,7 @@ xdescribe('test 1', () => {
     });
 
     it('Значения соответствуют введенным', () => {
-        replaceValue(eastLayout.nummerField, '1362');
-        selectOption(eastLayout.typeSelect, eastLayout.typeOption);
-        replaceValue(eastLayout.etField, '03.04.2017');
-        selectOption(eastLayout.preiseSelect, eastLayout.preiseOption);
-        selectOption(eastLayout.landSelect, eastLayout.landOption);
-        eastLayout.kommentarField.sendKeys('bla-bla-bla');
+        eastLayout.changePublicationValues('1362', '03.04.2017', 'bla-bla-bla');
         expect(eastLayout.nummerField.getAttribute('value')).toEqual('1362');
         expect(eastLayout.typeSelect.getAttribute('value')).toEqual(INSZENIERUNGSPUNKT_VALUE);
         expect((eastLayout.etField.getAttribute('value'))).toEqual('03.04.2017');
@@ -70,5 +59,4 @@ xdescribe('test 1', () => {
         expect(eastLayout.kommentarField.getAttribute('value')).toEqual('');
         expect(eastLayout.message.isDisplayed()).toBe(true);
     })
-
 });

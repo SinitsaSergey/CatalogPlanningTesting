@@ -25,9 +25,7 @@ xdescribe('test 2', () => {
 
 
     it('Отображается форма PuC.Marketing Saisons', () => {
-        westLayout.stammdatenRef.click();
-        browser.wait(EC.visibilityOf(westLayout.saisonsRef));
-        westLayout.saisonsRef.click();
+        westLayout.selectSaisonsMenuItem ();
         expect(header.applicationTitle.getText()).toEqual('Saisons');
     });
 

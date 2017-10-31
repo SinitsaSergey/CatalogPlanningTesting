@@ -1,23 +1,25 @@
-import {browser, ElementFinder} from "protractor";
+import {browser, ElementFinder, protractor} from "protractor";
 
 export class Actions {
 
     /**
      *
-     * @param {ElementFinder} element
+     * @param {ElementFinder} elem
+     * @param {ElementFinder} expectedElem
      */
-    static doobleClick (element: ElementFinder): void {
-        browser.actions().doubleClick(element).perform();
+    static doubleClickAndWait(elem: ElementFinder, expectedElem: ElementFinder) {
+        return browser.actions().doubleClick(elem).perform()
+            .then(() => browser.wait(protractor.ExpectedConditions.visibilityOf(expectedElem)));
     }
 
-    static replaceValue (element: ElementFinder, value: string): void {
-        element.clear();
-        element.sendKeys(value);
-    }
-
-    static selectOption (element: ElementFinder, option: ElementFinder): void {
-        element.click();
-        option.click();
+    /**
+     *
+     * @param {ElementFinder} elem
+     * @param {ElementFinder} expectedElem
+     */
+    static clickAndWait(elem: ElementFinder, expectedElem: ElementFinder) {
+       return elem.click()
+           .then(() => browser.wait(protractor.ExpectedConditions.visibilityOf(expectedElem)));
     }
 
 }
