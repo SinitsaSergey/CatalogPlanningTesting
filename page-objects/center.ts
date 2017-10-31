@@ -7,14 +7,18 @@ const ROOT = $('#center');
 
 export class Center extends PrototypePage {
 
-    treeElementLevel1 = ROOT.element(by.cssContainingText('.aciTreeText', '40, Herbst/Winter 2015/2016'));
-    treeElementLevel2 = ROOT.element(by.cssContainingText('.aciTreeText', 'Prospekt'));
-    treeElementLevel3 = ROOT.element(by.cssContainingText('.aciTreeText', '6556 Schwarzpreis'));
+    treeElementLevel1 = this.getTreeElement('40, Herbst/Winter 2015/2016');
+    treeElementLevel2 = this.getTreeElement('Prospekt');
+    treeElementLevel3 = this.getTreeElement('6556 Schwarzpreis');
+
+    getTreeElement(containingText: string) {
+        return ROOT.element(by.cssContainingText('.aciTreeText', containingText));
+    }
 
     saison34ListElement = ROOT.element(by.cssContainingText('li', '34'));
 
-    getListElement(text: string) {
-        return ROOT.element(by.cssContainingText('li', text))
+    getListElement(containingText: string) {
+        return ROOT.element(by.cssContainingText('li', containingText))
     }
 
     selectElementInTree() {
@@ -38,5 +42,7 @@ export class Center extends PrototypePage {
     deleteCreatedPublication () {
         return this.clickAfterClick(this.createdPublication, this.removePublicationButton);
     }
+
+    
 
 }
