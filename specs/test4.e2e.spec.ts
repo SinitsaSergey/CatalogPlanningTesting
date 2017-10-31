@@ -22,10 +22,6 @@ describe('test 4', () => {
         browser.get(TESTING_URL);
     });
 
-    afterAll(() => {
-        browser.sleep(5000);
-    });
-
     it('Отображается форма PuC.Marketing Publikationspflege', () => {
         westLayout.productionsEditorRef.click();
         expect(header.applicationTitle.getText()).toEqual('Publikationspflege');
