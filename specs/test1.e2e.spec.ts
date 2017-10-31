@@ -19,8 +19,6 @@ xdescribe('test 1', () => {
     let header = new Header();
     let center = new Center();
     let eastLayout = new EastLayout();
-    let doubleClickAndWait = Actions.doubleClickAndWait;
-    let {replaceValue, selectOption} = eastLayout;
 
     beforeAll(() => {
         browser.get(TESTING_URL);

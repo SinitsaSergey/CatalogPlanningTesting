@@ -13,9 +13,5 @@ export let config: Config = {
     onPrepare() {
         browser.driver.manage().window().maximize()
     },
-    allScriptsTimeout: 60000,
-    jasmineNodeOpts: {
-        defaultTimeoutInterval: 60000,
-    },
     noGlobals: true
 };

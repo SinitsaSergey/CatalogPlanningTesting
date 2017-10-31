@@ -1,6 +1,7 @@
-import {$, by} from "protractor";
+import {$, by, browser, protractor} from "protractor";
 import {Prototype} from "./prototype";
 import {Actions} from "../utils/actions";
+import {ModalContent} from "./modal-content";
 
 const ROOT = $('#center');
 
@@ -24,5 +25,19 @@ export class Center extends Prototype {
 
     createVorteileButton = ROOT.$('.glyphicon-plus');
     deleteVorteileButton = ROOT.$('.glyphicon-minus');
+    createPublicationButton = ROOT.$("button[title='Neue Publikation']");
+    createdPublication = ROOT
+        .element(by.cssContainingText('.aciTreeText', ModalContent.NEW_NUMMER + ' Schwarzpreis ET: 05.05.2017'));
+    removePublicationButton = ROOT.$('.glyphicon-trash');
+
+    isCreatedPublicationPresent() {
+        return browser.wait(protractor.ExpectedConditions.visibilityOf(this.createdPublication))
+            .then(() => this.createdPublication.isPresent())
+    }
+
+    deleteCreatedPublication () {
+        return this.createdPublication.click()
+            .then(() => this.removePublicationButton.click())
+    }
 
 }

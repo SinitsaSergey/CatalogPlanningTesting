@@ -7,12 +7,12 @@ export class EastLayout extends Prototype {
 
     nummerField = ROOT.$("input[placeholder='Nummer']");
     typeSelect = ROOT.element(by.cssContainingText('select', 'Prospekt'));
-    typeOption = this.typeSelect.element(by.css('option[label="Inszenierungspunkt"]'));
+    typeOption = this.typeSelect.$('option[label="Inszenierungspunkt"]');
     etField = ROOT.$("input[placeholder='ET']");
     preiseSelect = ROOT.element(by.cssContainingText('select', 'Schwarzpreis'));
-    preiseOption = this.preiseSelect.element(by.css('option[label="Reduziert"]'));
+    preiseOption = this.preiseSelect.$('option[label="Reduziert"]');
     landSelect = ROOT.element(by.cssContainingText('select', 'Deutschland'));
-    landOption = this.landSelect.element(by.css('option[label="Schweiz"]'));
+    landOption = this.landSelect.$('option[label="Schweiz"]');
     kommentarField = ROOT.$("textarea[placeholder='Kommentar']");
     cancelButton = ROOT.$("[title='Änderungen zurückstellen']");
     message = ROOT.element(by.cssContainingText('.cp-text-color', 'Wurde gespeichert'));
