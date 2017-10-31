@@ -1,11 +1,11 @@
 import {$, by, browser, protractor} from "protractor";
-import {Prototype} from "./prototype";
+import {PrototypePage} from "./prototype-page";
 import {Actions} from "../utils/actions";
 import {ModalContent} from "./modal-content";
 
 const ROOT = $('#center');
 
-export class Center extends Prototype {
+export class Center extends PrototypePage {
 
     treeElementLevel1 = ROOT.element(by.cssContainingText('.aciTreeText', '40, Herbst/Winter 2015/2016'));
     treeElementLevel2 = ROOT.element(by.cssContainingText('.aciTreeText', 'Prospekt'));
@@ -36,8 +36,7 @@ export class Center extends Prototype {
     }
 
     deleteCreatedPublication () {
-        return this.createdPublication.click()
-            .then(() => this.removePublicationButton.click())
+        return this.clickAfterClick(this.createdPublication, this.removePublicationButton);
     }
 
 }

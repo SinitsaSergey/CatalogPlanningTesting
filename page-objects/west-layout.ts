@@ -1,9 +1,9 @@
 import {$, by} from "protractor";
-import {Prototype} from "./prototype";
+import {PrototypePage} from "./prototype-page";
 
 const ROOT = $('#westLayout');
 
-export class WestLayout extends Prototype {
+export class WestLayout extends PrototypePage {
 
     productionsEditorRef = ROOT.element(by.cssContainingText('a', 'Publikationspflege'));
 

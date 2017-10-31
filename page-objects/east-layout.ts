@@ -1,9 +1,9 @@
 import {$, by} from "protractor";
-import {Prototype} from "./prototype";
+import {PrototypePage} from "./prototype-page";
 
 const ROOT = $('#eastLayout');
 
-export class EastLayout extends Prototype {
+export class EastLayout extends PrototypePage {
 
     nummerField = ROOT.$("input[placeholder='Nummer']");
     typeSelect = ROOT.element(by.cssContainingText('select', 'Prospekt'));

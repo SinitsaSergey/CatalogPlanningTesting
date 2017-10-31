@@ -1,9 +1,9 @@
 import {$, by} from "protractor";
-import {Prototype} from "./prototype";
+import {PrototypePage} from "./prototype-page";
 
 const ROOT = $('.modal-content');
 
-export class ModalContent extends Prototype {
+export class ModalContent extends PrototypePage {
 
     inputNameField = ROOT.$('.form-control.input-sm.ng-pristine');
     okButton = ROOT.element(by.cssContainingText('button', 'Anlegen'));
@@ -35,17 +35,14 @@ export class ModalContent extends Prototype {
         .$('textarea');
 
     createNewPublication(et: string, warenabgabe: string, kommentar: string) {
-        return this.saisonSelect.click()
-            .then(() => this.saisonOption.click())
-            .then(() => this.inputNummerField.sendKeys(ModalContent.NEW_NUMMER)
-            .then(() => this.typeSelect.click())
-            .then(() => this.typeOption.click())
+        return this.selectOption(this.saisonSelect, this.saisonOption)
+            .then(() => this.inputNummerField.sendKeys(ModalContent.NEW_NUMMER))
+            .then(() => this.selectOption(this.typeSelect, this.typeOption))
             .then(() => this.replaceValue(this.hauptEtInputField, et))
-            .then(() => this.preiseSelect.click())
-            .then(() => this.preiseOption.click())
+            .then(() => this.selectOption(this.preiseSelect, this.preiseOption))
             .then(() => this.replaceValue(this.inputWarenabgabeField, warenabgabe))
             .then(() => this.inputKommentarField.sendKeys(kommentar))
-            .then(() => this.okButton.click()))
+            .then(() => this.okButton.click())
     }
 
 }
