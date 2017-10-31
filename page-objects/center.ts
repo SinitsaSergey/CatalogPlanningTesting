@@ -15,16 +15,16 @@ export class Center extends PrototypePage {
         return ROOT.element(by.cssContainingText('.aciTreeText', containingText));
     }
 
-    saison34ListElement = ROOT.element(by.cssContainingText('li', '34'));
+    //saison34ListElement = ROOT.element(by.cssContainingText('li', '34'));
 
     getListElement(containingText: string) {
         return ROOT.element(by.cssContainingText('li', containingText))
     }
 
-    selectElementInTree() {
-        return Actions.doubleClickAndWait(this.treeElementLevel1, this.treeElementLevel2)
-            .then(() => Actions.doubleClickAndWait(this.treeElementLevel2, this.treeElementLevel3))
-            .then(() => this.treeElementLevel3.click())
+    selectElementInTree(text1: string, text2: string, text3: string) {
+        return Actions.doubleClickAndWait(this.getTreeElement(text1), this.getTreeElement(text2))
+            .then(() => Actions.doubleClickAndWait(this.getTreeElement(text2), this.getTreeElement(text3)))
+            .then(() => this.getTreeElement(text3).click())
     }
 
     createVorteileButton = ROOT.$('.glyphicon-plus');
@@ -43,6 +43,6 @@ export class Center extends PrototypePage {
         return this.clickAfterClick(this.createdPublication, this.removePublicationButton);
     }
 
-    
+
 
 }

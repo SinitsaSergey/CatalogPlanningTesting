@@ -10,7 +10,7 @@ const VR_NAME_VALUE = 'VR_2';
 const NEW_VORTEILE_VALUE = 'Test_create';
 const EDIT_VORTEILE_VALUE = 'Test_edit';
 
-xdescribe('test 3', () => {
+describe('test 3', () => {
 
     let westLayout = new WestLayout();
     let header = new Header();

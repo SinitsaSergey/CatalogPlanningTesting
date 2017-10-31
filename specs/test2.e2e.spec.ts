@@ -10,7 +10,7 @@ const SAISONTYP_VALUE = 'Herbst/Winter 2012/2013';
 const STARTDATUM_VALUE = '01.09.2012';
 const ENDDATUM_VALUE = '28.02.2013';
 
-xdescribe('test 2', () => {
+describe('test 2', () => {
 
     let westLayout = new WestLayout();
     let header = new Header();
@@ -30,7 +30,7 @@ xdescribe('test 2', () => {
     });
 
     it('На форме справа поля Name, Saisontyp, Startdatum, Enddatum содержат значения, согласно выбору', () => {
-        center.saison34ListElement.click();
+        center.getListElement('34').click();
         expect(eastLayout.saisonNameField.getAttribute('value')).toEqual(NAME_VALUE);
         expect(eastLayout.saisontypField.getAttribute('value')).toEqual(SAISONTYP_VALUE);
         expect(eastLayout.startdatumField.getAttribute('value')).toEqual(STARTDATUM_VALUE);

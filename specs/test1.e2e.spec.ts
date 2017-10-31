@@ -1,11 +1,13 @@
 import {browser} from "protractor";
 import {WestLayout} from "../page-objects/west-layout";
 import {Center} from "../page-objects/center";
-import {Actions} from "../utils/actions";
 import {EastLayout} from "../page-objects/east-layout";
 import {Header} from "../page-objects/header";
 
 const TESTING_URL = 'http://vtest16:8093/catalog-planning/#/productionsEditor';
+const ELEMENT_LEVEL1_TEXT ='40, Herbst/Winter 2015/2016';
+const ELEMENT_LEVEL2_TEXT = 'Prospekt';
+const ELEMENT_LEVEL3_TEXT = '6556 Schwarzpreis';
 const PROSPEKT_VALUE = '1';
 const INSZENIERUNGSPUNKT_VALUE = '21';
 const DEUTSCHLAND_VALUE = '43';
@@ -13,7 +15,7 @@ const SCHWEIZ_VALUE = '181';
 const SCHWARZPREIS_VALUE = '0';
 const REDUZIERT_VALUE = '1';
 
-xdescribe('test 1', () => {
+describe('test 1', () => {
 
     let westLayout = new WestLayout();
     let header = new Header();
@@ -30,7 +32,7 @@ xdescribe('test 1', () => {
     });
 
     it('На форме справа на вкладке Werbeplanung поля Nummer, Type, ET, Preise содержат значения, согласно выбору', () => {
-        center.selectElementInTree();
+        center.selectElementInTree(ELEMENT_LEVEL1_TEXT, ELEMENT_LEVEL2_TEXT, ELEMENT_LEVEL3_TEXT);
         expect(eastLayout.nummerField.getAttribute('value')).toEqual('6556');
         expect(eastLayout.typeSelect.getAttribute('value')).toEqual(PROSPEKT_VALUE);
         expect((eastLayout.etField.getAttribute('value'))).toEqual('02.03.2017');
