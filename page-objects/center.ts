@@ -37,5 +37,6 @@ export class Center extends PrototypePage {
         return this.clickAfterClick(this.createdPublication, this.removePublicationButton);
     }
 
+    generateReportButton = ROOT.$('.glyphicon-file');
 
 }
