@@ -1,6 +1,6 @@
 import {browser, ElementFinder, ExpectedConditions} from "protractor";
 
-export class Prototype {
+export class PrototypePage {
 
     replaceValue (elem: ElementFinder, value: string) {
         return elem.clear()
