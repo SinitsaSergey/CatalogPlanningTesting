@@ -3,7 +3,12 @@ import {WestLayout} from "../page-objects/west-layout";
 import {Header} from "../page-objects/header";
 import {Center} from "../page-objects/center";
 import {ModalContent} from "../page-objects/modal-content";
-import {TESTING_URL, HAUPT_ET_VALUE, WARENABGABE_VALUE, EDIT_KOMMENTAR_VALUE} from "../utils/constants";
+import {
+    TESTING_URL,
+    HAUPT_ET_VALUE,
+    WARENABGABE_VALUE,
+    EDIT_KOMMENTAR_VALUE
+} from "../utils/constants";
 
 describe('test 4', () => {
 
