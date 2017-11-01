@@ -4,22 +4,13 @@ export class Actions {
 
     /**
      *
-     * @param {ElementFinder} elem
-     * @param {ElementFinder} expectedElem
+     * @param {ElementFinder} elem первый элемент для двойного клика
+     * @param {ElementFinder} elemToWait - элемент появление которого ожидается после двойного клика
+     * @returns promise.Promise<void>
      */
-    static doubleClickAndWait(elem: ElementFinder, expectedElem: ElementFinder) {
+    static doubleClickAndWait(elem: ElementFinder, elemToWait: ElementFinder) {
         return browser.actions().doubleClick(elem).perform()
-            .then(() => browser.wait(protractor.ExpectedConditions.visibilityOf(expectedElem)));
-    }
-
-    /**
-     *
-     * @param {ElementFinder} elem
-     * @param {ElementFinder} expectedElem
-     */
-    static clickAndWait(elem: ElementFinder, expectedElem: ElementFinder) {
-       return elem.click()
-           .then(() => browser.wait(protractor.ExpectedConditions.visibilityOf(expectedElem)));
+            .then(() => browser.wait(protractor.ExpectedConditions.visibilityOf(elemToWait)));
     }
 
     static pressEnterKey () {
