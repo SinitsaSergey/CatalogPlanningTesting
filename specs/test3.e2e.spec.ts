@@ -4,11 +4,7 @@ import {Center} from "../page-objects/center";
 import {EastLayout} from "../page-objects/east-layout";
 import {browser} from "protractor";
 import {ModalContent} from "../page-objects/modal-content";
-
-const TESTING_URL = 'http://vtest16:8093/catalog-planning/#/productionsEditor';
-const VR_NAME_VALUE = 'VR_2';
-const NEW_VORTEILE_VALUE = 'Test_create';
-const EDIT_VORTEILE_VALUE = 'Test_edit';
+import {TESTING_URL, VR_NAME_VALUE, NEW_VORTEILE_VALUE, EDIT_VORTEILE_VALUE} from "../utils/constants";
 
 describe('test 3', () => {
 

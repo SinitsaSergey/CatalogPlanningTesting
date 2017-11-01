@@ -3,11 +3,7 @@ import {WestLayout} from "../page-objects/west-layout";
 import {Header} from "../page-objects/header";
 import {Center} from "../page-objects/center";
 import {ModalContent} from "../page-objects/modal-content";
-
-const TESTING_URL = 'http://vtest16:8093/catalog-planning/#/productionsEditor';
-const ET_VALUE = '05.05.2017';
-const WARENABGABE_VALUE = '05.05.2017';
-const KOMMENTAR_VALUE = 'test';
+import {TESTING_URL, HAUPT_ET_VALUE, WARENABGABE_VALUE, EDIT_KOMMENTAR_VALUE} from "../utils/constants";
 
 describe('test 4', () => {
 
@@ -29,7 +25,7 @@ describe('test 4', () => {
 
     it('В дереве публикаций должна появиться новая запись со значением' + newNummer + 'Schwarzpreis ET: 05.05.2017', () => {
         center.createPublicationButton.click();
-        modalContent.createNewPublication(ET_VALUE, WARENABGABE_VALUE, KOMMENTAR_VALUE);
+        modalContent.createNewPublication(HAUPT_ET_VALUE, WARENABGABE_VALUE, EDIT_KOMMENTAR_VALUE);
         expect(center.isCreatedPublicationPresent()).toBe(true);
     });
 
