@@ -36,7 +36,7 @@ describe('test 3', () => {
     });
 
     it('В списке должна появиться новая строка со значением Name, заданным на этапе создания', () => {
-        center.createVorteileButton.click();
+        center.createButton.click();
         modalContent.inputValue(NEW_VORTEILE_VALUE);
         expect(center.getListElement(NEW_VORTEILE_VALUE).isPresent())
             .toBe(true, 'в списке отсутствует строка с созданным значением Name');
@@ -51,9 +51,9 @@ describe('test 3', () => {
 
     it('В списке отсутствует элемент, созданный на шаге 3', () => {
         center.getListElement(EDIT_VORTEILE_VALUE).click();
-        expect(center.deleteVorteileButton.isEnabled())
+        expect(center.deleteButton.isEnabled())
             .toBe(true, 'кнопка удаления недоступна');
-        center.deleteVorteileButton.click();
+        center.deleteButton.click();
         modalContent.confirmDeletingButton.click();
         expect(center.getListElement(EDIT_VORTEILE_VALUE).isPresent())
             .toBe(false, 'присутствует элемент, который был удален');
