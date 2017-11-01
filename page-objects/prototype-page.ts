@@ -12,10 +12,10 @@ export class PrototypePage {
             .then(() => option.click());
     }
 
-    clickAfterClick (elem: ElementFinder, expectedElem: ElementFinder) {
+    clickAfterClick (elem: ElementFinder, elemToWait: ElementFinder) {
         return elem.click()
-            .then(() => browser.wait(ExpectedConditions.visibilityOf(expectedElem)))
-            .then(() => expectedElem.click())
+            .then(() => browser.wait(ExpectedConditions.visibilityOf(elemToWait)))
+            .then(() => elemToWait.click())
     }
 
 }
