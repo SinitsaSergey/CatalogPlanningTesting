@@ -33,6 +33,11 @@ export class ModalContent extends PrototypePage {
         .$('input');
     inputKommentarField = ROOT.element(by.cssContainingText('.row.smallspacer', 'Kommentar'))
         .$('textarea');
+    publicationPartSelect = ROOT.element(by.cssContainingText('.row.smallspacer', 'Publikationsteil'))
+        .$('select');
+    publicationPartOption = this.publicationPartSelect.$("option[label='3911']");
+    undDerSeiteSelect = ROOT.element(by.cssContainingText('.row.smallspacer', 'und der Seite'));
+    undDerSeiteOption = this.undDerSeiteSelect.$("option[label='Titel']");
 
     createNewPublication(et: string, warenabgabe: string, kommentar: string) {
         return this.selectOption(this.saisonSelect, this.saisonOption)
@@ -43,6 +48,12 @@ export class ModalContent extends PrototypePage {
             .then(() => this.replaceValue(this.inputWarenabgabeField, warenabgabe))
             .then(() => this.inputKommentarField.sendKeys(kommentar))
             .then(() => this.okButton.click())
+    }
+
+    createArtikelzuordnung() {
+        return this.selectOption(this.publicationPartSelect, this.publicationPartOption)
+            .then(() => this.selectOption(this.undDerSeiteSelect, this.undDerSeiteOption))
+            .then(() => this.okButton.click());
     }
 
 }

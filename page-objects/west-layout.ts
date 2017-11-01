@@ -11,6 +11,7 @@ export class WestLayout extends PrototypePage {
     vorteileRef = ROOT.element(by.cssContainingText('.list-group-item', 'Vorteile'));
     einkaufRef = ROOT.element(by.cssContainingText('.text-justify', 'EINKAUF'));
     seitenplanungRef = ROOT.element(by.cssContainingText('.list-group-item', 'Seitenplanung'));
+    artikelzuordnungRef = ROOT.element(by.cssContainingText('.list-group-item', 'Artikelzuordnung'));
 
     selectVorteileMenuItem() {
         return this.clickAfterClick(this.stammdatenRef, this.vorteileRef);
@@ -22,6 +23,10 @@ export class WestLayout extends PrototypePage {
 
     selectSeitenplanungMenuItem() {
         return this.clickAfterClick(this.einkaufRef, this.seitenplanungRef);
+    }
+
+    selectArtikelzuordnungMenuItem() {
+        return this.clickAfterClick(this.einkaufRef, this.artikelzuordnungRef);
     }
 
 }

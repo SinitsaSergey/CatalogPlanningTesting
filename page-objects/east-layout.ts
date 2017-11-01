@@ -27,6 +27,8 @@ export class EastLayout extends PrototypePage {
     vrNameField = ROOT.$('.form-control.input-sm');
     saveVrButton = ROOT.$('.fa-floppy-o');
 
+    currentEshopNrField = $('.tab-pane.active').$('.input-sm.form-control');
+
     saveNewValue(value: string) {
         return this.replaceValue(this.vrNameField, value)
             .then(() => this.saveVrButton.click());

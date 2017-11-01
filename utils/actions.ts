@@ -22,4 +22,12 @@ export class Actions {
            .then(() => browser.wait(protractor.ExpectedConditions.visibilityOf(expectedElem)));
     }
 
+    static pressEnterKey () {
+        return browser.actions().sendKeys(protractor.Key.ENTER).perform();
+    }
+
+    static pressRightKey () {
+        return browser.actions().sendKeys(protractor.Key.ARROW_RIGHT).perform();
+    }
+
 }

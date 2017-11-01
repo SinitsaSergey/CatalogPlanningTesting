@@ -29,3 +29,5 @@
       export const ELEMENT2_LEVEL1_TEXT = '39, Frühling/Sommer 2015';
       export const ELEMENT2_LEVEL2_TEXT = 'Inszenierungspunkt';
       export const ELEMENT2_LEVEL3_TEXT = '3911 Schwarzpreis ET: 04.03.2016';
+
+      export const HANDSONTABLE_VALUE = '11010084';

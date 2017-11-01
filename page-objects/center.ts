@@ -21,12 +21,13 @@ export class Center extends PrototypePage {
             .then(() => this.getTreeElement(text3).click())
     }
 
-    createVorteileButton = ROOT.$('.glyphicon-plus');
-    deleteVorteileButton = ROOT.$('.glyphicon-minus');
+    createButton = ROOT.$('.glyphicon-plus');
+    deleteButton = ROOT.$('.glyphicon-minus');
     createPublicationButton = ROOT.$("button[title='Neue Publikation']");
     createdPublication = ROOT
         .element(by.cssContainingText('.aciTreeText', ModalContent.NEW_NUMMER + ' Schwarzpreis ET: 05.05.2017'));
     removePublicationButton = ROOT.$('.glyphicon-trash');
+    resetChangesButton = ROOT.$('.fa-undo');
 
     isCreatedPublicationPresent() {
         return browser.wait(protractor.ExpectedConditions.visibilityOf(this.createdPublication))
@@ -39,4 +40,13 @@ export class Center extends PrototypePage {
 
     generateReportButton = ROOT.$('.glyphicon-file');
 
+    enshopNrCompleteArrow = ROOT.$('.htRight.tBold.htMiddle.htAutocomplete.current').$('.htAutocompleteArrow');
+    handsontableInput = ROOT.$$('textarea.handsontableInput').get(1);
+
+    inputEnshopNrValue (handsontableValue: string) {
+        return browser.wait(protractor.ExpectedConditions.visibilityOf(this.enshopNrCompleteArrow))
+            .then(() => Actions.pressEnterKey())
+            .then(() => this.handsontableInput.sendKeys(handsontableValue))
+            .then(() => Actions.pressRightKey())
+    }
 }
