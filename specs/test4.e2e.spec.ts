@@ -9,6 +9,7 @@ import {
     WARENABGABE_VALUE,
     EDIT_KOMMENTAR_VALUE
 } from "../utils/constants";
+import {ClearData} from "../utils/clear-data";
 
 describe('test 4', () => {
 
@@ -21,6 +22,10 @@ describe('test 4', () => {
 
     beforeAll(() => {
         browser.get(TESTING_URL);
+    });
+
+    afterAll(() => {
+        ClearData.deleteCookies();
     });
 
     it('Отображается форма PuC.Marketing Publikationspflege', () => {

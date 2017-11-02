@@ -8,6 +8,7 @@ import {
     ELEMENT2_LEVEL2_TEXT,
     ELEMENT2_LEVEL3_TEXT
 } from "../utils/constants";
+import {ClearData} from "../utils/clear-data";
 
 describe('test 5', () => {
 
@@ -17,6 +18,10 @@ describe('test 5', () => {
 
     beforeAll(() => {
         browser.get(TESTING_URL);
+    });
+
+    afterAll(() => {
+        ClearData.deleteCookies();
     });
 
     it('Отчет сохраняется на диске', () => {

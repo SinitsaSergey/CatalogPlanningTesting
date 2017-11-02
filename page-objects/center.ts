@@ -1,4 +1,4 @@
-import {$, browser, by, protractor} from "protractor";
+import {$, browser, by, ElementFinder, protractor} from "protractor";
 import {PrototypePage} from "./prototype-page";
 import {Actions} from "../utils/actions";
 import {ModalContent} from "./modal-content";
@@ -7,8 +7,8 @@ const ROOT = $('#center');
 
 export class Center extends PrototypePage {
 
-    getTreeElement(containingText: string) {
-        return ROOT.element(by.cssContainingText('.aciTreeText', containingText));
+    getTreeElement(parentElem: ElementFinder, containingText: string) {
+        return parentElem.element(by.cssContainingText('.aciTreeText', containingText));
     }
 
     getListElement(containingText: string) {
@@ -16,9 +16,12 @@ export class Center extends PrototypePage {
     }
 
     selectElementInTree(text1: string, text2: string, text3: string) {
-        return Actions.doubleClickAndWait(this.getTreeElement(text1), this.getTreeElement(text2))
-            .then(() => Actions.doubleClickAndWait(this.getTreeElement(text2), this.getTreeElement(text3)))
-            .then(() => this.getTreeElement(text3).click())
+        let treeElement1 = ROOT.element(by.cssContainingText('.aciTreeLi.aciTreeInode.aciTreeLevel0', text1));
+        let treeElement2 = this.getTreeElement(treeElement1, text2);
+        let treeElement3 = this.getTreeElement(treeElement1, text3);
+        return Actions.doubleClickAndWait(treeElement1, treeElement2)
+            .then(() => Actions.doubleClickAndWait(treeElement2, treeElement3))
+            .then(() => treeElement3.click())
     }
 
     createButton = ROOT.$('.glyphicon-plus');

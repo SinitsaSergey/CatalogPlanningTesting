@@ -41,7 +41,7 @@ export class ModalContent extends PrototypePage {
 
     createNewPublication(et: string, warenabgabe: string, kommentar: string) {
         return this.selectOption(this.saisonSelect, this.saisonOption)
-            .then(() => this.inputNummerField.sendKeys(ModalContent.NEW_NUMMER))
+            .then(() => this.replaceValue(this.inputNummerField, ModalContent.NEW_NUMMER))
             .then(() => this.selectOption(this.typeSelect, this.typeOption))
             .then(() => this.replaceValue(this.hauptEtInputField, et))
             .then(() => this.selectOption(this.preiseSelect, this.preiseOption))

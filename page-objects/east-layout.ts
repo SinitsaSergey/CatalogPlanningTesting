@@ -6,12 +6,15 @@ const ROOT = $('#eastLayout');
 export class EastLayout extends PrototypePage {
 
     nummerField = ROOT.$("input[placeholder='Nummer']");
-    typeSelect = ROOT.element(by.cssContainingText('select', 'Prospekt'));
+    typeSelect = ROOT.element(by.cssContainingText('.row.smallspacer.col-def', 'Typ'))
+        .$('select');
     typeOption = this.typeSelect.$('option[label="Inszenierungspunkt"]');
     etField = ROOT.$("input[placeholder='ET']");
-    preiseSelect = ROOT.element(by.cssContainingText('select', 'Schwarzpreis'));
+    preiseSelect = ROOT.element(by.cssContainingText('.row.smallspacer.col-def', 'Preise'))
+        .$('select');
     preiseOption = this.preiseSelect.$('option[label="Reduziert"]');
-    landSelect = ROOT.element(by.cssContainingText('select', 'Deutschland'));
+    landSelect = ROOT.element(by.cssContainingText('.row.smallspacer.col-def', 'Land'))
+        .$('select');
     landOption = this.landSelect.$('option[label="Schweiz"]');
     kommentarField = ROOT.$("textarea[placeholder='Kommentar']");
     cancelButton = ROOT.$("[title='Änderungen zurückstellen']");
