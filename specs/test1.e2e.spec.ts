@@ -20,7 +20,7 @@ import {
     SCHWEIZ_VALUE,
     DEUTSCHLAND_VALUE
 } from "../utils/constants";
-import {ClearData} from "../utils/clear-data";
+import {deleteCookies} from "../utils/clear-data";
 
 describe('test 1', () => {
 
@@ -34,7 +34,7 @@ describe('test 1', () => {
     });
 
     afterAll(() => {
-        ClearData.deleteCookies();
+        deleteCookies();
     });
 
     it('Отображается форма PuC.Marketing Publikationspflege', () => {

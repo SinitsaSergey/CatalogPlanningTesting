@@ -10,7 +10,7 @@ import {
     NEW_VORTEILE_VALUE,
     EDIT_VORTEILE_VALUE
 } from "../utils/constants";
-import {ClearData} from "../utils/clear-data";
+import {deleteCookies} from "../utils/clear-data";
 
 describe('test 3', () => {
 
@@ -25,7 +25,7 @@ describe('test 3', () => {
     });
 
     afterAll(() => {
-        ClearData.deleteCookies();
+        deleteCookies();
     });
 
     it('Отображается форма PuC.Marketing Vorteile', () => {

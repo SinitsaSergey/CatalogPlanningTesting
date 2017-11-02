@@ -31,6 +31,7 @@ export class Center extends PrototypePage {
         .element(by.cssContainingText('.aciTreeText', ModalContent.NEW_NUMMER + ' Schwarzpreis ET: 05.05.2017'));
     removePublicationButton = ROOT.$('.glyphicon-trash');
     resetChangesButton = ROOT.$('.fa-undo');
+    generateReportButton = ROOT.$('.glyphicon-file');
 
     isCreatedPublicationPresent() {
         return browser.wait(protractor.ExpectedConditions.visibilityOf(this.createdPublication))
@@ -40,8 +41,6 @@ export class Center extends PrototypePage {
     deleteCreatedPublication() {
         return this.clickAfterClick(this.createdPublication, this.removePublicationButton);
     }
-
-    generateReportButton = ROOT.$('.glyphicon-file');
 
     enshopNrCompleteArrow = ROOT.$('.htRight.tBold.htMiddle.htAutocomplete.current').$('.htAutocompleteArrow');
     handsontableInput = ROOT.$$('textarea.handsontableInput').get(1);

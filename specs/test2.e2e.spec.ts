@@ -10,7 +10,7 @@ import {
     STARTDATUM_VALUE,
     TESTING_URL
 } from "../utils/constants";
-import {ClearData} from "../utils/clear-data";
+import {deleteCookies} from "../utils/clear-data";
 
 describe('test 2', () => {
 
@@ -24,7 +24,7 @@ describe('test 2', () => {
     });
 
     afterAll(() => {
-        ClearData.deleteCookies();
+        deleteCookies();
     });
 
     it('Отображается форма PuC.Marketing Saisons', () => {

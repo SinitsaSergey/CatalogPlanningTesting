@@ -11,7 +11,7 @@ import {Header} from "../page-objects/header";
 import {Center} from "../page-objects/center";
 import {ModalContent} from "../page-objects/modal-content";
 import {EastLayout} from "../page-objects/east-layout";
-import {ClearData} from "../utils/clear-data";
+import {deleteCookies} from "../utils/clear-data";
 
 describe('test 6', () => {
 
@@ -27,10 +27,7 @@ describe('test 6', () => {
 
     afterAll(() => {
         browser.sleep(2000);
-    });
-
-    afterAll(() => {
-        ClearData.deleteCookies();
+        deleteCookies();
     });
 
     it('Таблица имеет первоначальный вид', () => {
